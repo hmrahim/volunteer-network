@@ -12,6 +12,7 @@ import Login from './Components/Pages/Login/Login';
 import Signup from './Components/Pages/Signup/Signup';
 import BookingList from './Components/Pages/BoolingList/BookingList';
 import RequireAuth from './Components/Pages/RequireAuth/RequireAuth';
+import ResetPass from './Components/Pages/ResetPass/ResetPass';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
        <Route path='/' element={<Homes></Homes>}></Route>
        <Route path='/login' element={<Login></Login>}></Route>
        <Route path='/signup' element={<Signup></Signup>}></Route>
+       <Route path='/resetpass' element={<ResetPass></ResetPass>}></Route>
        <Route path='/bookinglist' element={
          <RequireAuth>
            <BookingList></BookingList>
