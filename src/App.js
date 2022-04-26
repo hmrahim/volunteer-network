@@ -13,6 +13,7 @@ import Signup from './Components/Pages/Signup/Signup';
 import BookingList from './Components/Pages/BoolingList/BookingList';
 import RequireAuth from './Components/Pages/RequireAuth/RequireAuth';
 import ResetPass from './Components/Pages/ResetPass/ResetPass';
+import NotFound from './Components/Pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
            <BookingList></BookingList>
          </RequireAuth>
        }></Route>
+           <Route path='*' element={<NotFound></NotFound>}></Route>
      </Routes>
      <ToastContainer></ToastContainer>
     </div>

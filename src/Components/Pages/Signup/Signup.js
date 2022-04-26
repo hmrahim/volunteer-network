@@ -5,6 +5,7 @@ import auth from "../../../firebase_init"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useSendEmailVerification } from 'react-firebase-hooks/auth';
+import { useUpdateProfile } from 'react-firebase-hooks/auth';
 
 const Signup = () => {
   const [
@@ -14,6 +15,7 @@ const Signup = () => {
     error,
   ] = useCreateUserWithEmailAndPassword(auth);
   const [sendEmailVerification, sending, vefifyError] = useSendEmailVerification(auth);
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
 const navigate = useNavigate()
 
@@ -25,7 +27,8 @@ const navigate = useNavigate()
     const password = e.target.password.value
     createUserWithEmailAndPassword(email,password)
     .then(async()=>{
-      await sendEmailVerification()
+      await sendEmailVerification();
+      await updateProfile({displayName:name})
 
     })
   

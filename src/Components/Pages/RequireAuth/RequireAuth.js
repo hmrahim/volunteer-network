@@ -6,6 +6,7 @@ import Verify from '../Verify/Verify';
 
 const RequireAuth = ({children}) => {
     const [user, loading, error] = useAuthState(auth);
+    
     const location = useLocation()
     console.log(user);
     if(loading){
