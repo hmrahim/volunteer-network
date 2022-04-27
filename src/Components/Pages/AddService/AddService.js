@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -15,21 +17,29 @@ const AddService = () => {
         const date = e.target.date.value
         const data = {title,details,link,date}
         console.log(data);
-       
-       fetch("http://localhost:5000/service",{
-           method:"POST",
-           headers:{
-               "Content-Type" : "Application/json"
-           },
-           body:JSON.stringify(data)
-       })
-       .then(res=>res.json())
-       .then(ss=>{
-         console.log(ss);
+        if(!title || !details || !link || !data){
+          toast.error("Warning! Please fill the field")
+        }else{
+          fetch("http://localhost:5000/service",{
+            method:"POST",
+            headers:{
+                "Content-Type" : "Application/json"
+            },
+            body:JSON.stringify(data)
+        })
+        .then(res=>res.json())
+        .then(ss=>{
+          console.log(ss);
+          e.target.reset();
+          toast.success(" Success! Data inserted successfully")
+          
+ 
+        })
          
 
-       })
-        
+        }
+       
+      
     }
     return (
         <div>
