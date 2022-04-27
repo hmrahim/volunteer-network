@@ -53,7 +53,7 @@ const Nav = () => {
         </li>
         }
         <li className="nav-item ms-4">
-          <Link className="nav-link active btn btn-secondary text-light px-3 my-3 my-md-0 " aria-current="page" to="#">Admin</Link>
+          <Link className="nav-link active btn btn-secondary text-light px-3 my-3 my-md-0 " aria-current="page" to="/admin">Admin</Link>
         </li>
  
       </ul>
