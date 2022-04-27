@@ -1,12 +1,31 @@
-import React from 'react';
+
+import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+
 
 const AddService = () => {
-    const formHandeler = e=> {
+  const [startDate, setStartDate] = useState(new Date());
+    const formHandeler =(e)=> {
         e.preventDefault()
         const title = e.target.title.value
         const details = e.target.details.value
         const link = e.target.link.value
-        console.log(title,details,link)
+        const date = e.target.date.value
+        const data = {title,details,link,date}
+        console.log(data);
+       
+       fetch("http://localhost:5000/service",{
+           method:"POST",
+           headers:{
+               "Content-Type" : "Application/json"
+           },
+           body:JSON.stringify(data)
+       })
+       .then(res=>res.json())
+       .then(ss=>console.log(ss))
+        
     }
     return (
         <div>
@@ -49,6 +68,12 @@ const AddService = () => {
               id="formGroupExampleInput2"
               placeholder="Images"
             />
+          </div>
+          <div className="mb-3">
+          <label for="formGroupExampleInput2" className="form-label">
+              Date
+            </label>
+          <DatePicker className="form-control" name="date" selected={startDate} onChange={(date) => setStartDate(date)} />
           </div>
           <div className="mb-3">
            <button type='submit' className="btn btn-primary w-100">Submit</button>
